@@ -36,8 +36,5 @@ public class Consumer {
                 }
 
         );
-       // channel.close();
-       // connection.close();
-
     }
 }
