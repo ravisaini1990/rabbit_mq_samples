@@ -1,4 +1,4 @@
-package com.ravi.queue.direct_exchange;
+package com.ravi.queue.exchange.direct_exchange;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;

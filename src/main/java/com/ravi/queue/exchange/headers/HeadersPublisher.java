@@ -1,4 +1,4 @@
-package com.ravi.queue.headers;
+package com.ravi.queue.exchange.headers;
 
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;

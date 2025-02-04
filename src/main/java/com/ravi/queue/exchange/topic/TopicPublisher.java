@@ -1,4 +1,4 @@
-package com.ravi.queue.exchange.direct_exchange;
+package com.ravi.queue.exchange.topic;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -7,7 +7,7 @@ import com.rabbitmq.client.ConnectionFactory;
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
-public class DirectPublisher {
+public class TopicPublisher {
 
     public static void main(String[] args) throws IOException, TimeoutException {
         ConnectionFactory connectionFactory = new ConnectionFactory();
@@ -15,17 +15,15 @@ public class DirectPublisher {
 
         Channel channel = connection.createChannel();
 
-        for (int i=1 ; i<=25; i++) {
-            String message = "Direct message - Mobile: "+ (i*100);
+        for (int i = 1; i <= 5; i++) {
+            String message = "TopicPublisher message: " + (i);
             channel.basicPublish(
-                    "Direct-Exchange",
-                    "mobile",
-                    null,
-                    message.getBytes()
+                    "Topic-Exchange", "tv.mobile.ac",
+                    null, message.getBytes()
             );
         }
 
-        System.out.println("Waiting for Direct message - Mobile to Exit");
+        System.out.println("Waiting for message - Exit");
         channel.close();
         connection.close();
 

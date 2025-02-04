@@ -37,7 +37,14 @@ public class PersonRestController {
                 //.setHeader("x-match", "any")
                 .setHeader("isPerson", true)
                 .build();
-        rabbitTemplate.send("Headers-Exchange", "", message);
+        //rabbitTemplate.send("Headers-Exchange", "", message);
+
+
+        /// For default exchange i.e AMQP default- if take queue name i.e person and redirect to that
+        //rabbitTemplate.convertAndSend("", "Person", person);
+
+        /// Exchange to another exchange using routing key of exchange type in rabbit mq dashboard
+        rabbitTemplate.convertAndSend("Direct-Exchange", "fanout", person);
 
         return "Welcome ! "+name.toUpperCase();
     }

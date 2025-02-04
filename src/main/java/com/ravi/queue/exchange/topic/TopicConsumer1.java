@@ -1,4 +1,4 @@
-package com.ravi.queue.exchange.fanout;
+package com.ravi.queue.exchange.topic;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -10,9 +10,9 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
-public class FanOutConsumer3 {
+public class TopicConsumer1 {
 
-    private static  final Logger LOGGER = LoggerFactory.getLogger(FanOutConsumer3.class);
+    private static  final Logger LOGGER = LoggerFactory.getLogger(TopicConsumer1.class);
 
     public static void main(String[] args) throws IOException, TimeoutException {
 
@@ -24,19 +24,16 @@ public class FanOutConsumer3 {
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             String receivedMessage = new String(delivery.getBody());
 
-            LOGGER.info("FanOutConsumer3 - Message Received {}", receivedMessage);
+            LOGGER.info("Header Mobile Consumer-  {}", receivedMessage);
 
         };
         channel.basicConsume(
-                "Tv",
+                "Mobile",
                 true,
                 deliverCallback, consumerTag -> {
                     LOGGER.info("Message Tag {}", consumerTag);
                 }
 
         );
-       // channel.close();
-       // connection.close();
-
     }
 }

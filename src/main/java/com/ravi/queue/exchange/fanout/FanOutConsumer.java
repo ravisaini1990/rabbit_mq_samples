@@ -1,4 +1,4 @@
-package com.ravi.queue.fanout;
+package com.ravi.queue.exchange.fanout;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;

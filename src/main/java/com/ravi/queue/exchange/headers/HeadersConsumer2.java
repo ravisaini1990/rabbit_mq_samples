@@ -1,4 +1,4 @@
-package com.ravi.queue.headers;
+package com.ravi.queue.exchange.headers;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -10,9 +10,9 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
-public class HearsConsumer3 {
+public class HeadersConsumer2 {
 
-    private static  final Logger LOGGER = LoggerFactory.getLogger(HearsConsumer3.class);
+    private static  final Logger LOGGER = LoggerFactory.getLogger(HeadersConsumer2.class);
 
     public static void main(String[] args) throws IOException, TimeoutException {
 
@@ -24,11 +24,11 @@ public class HearsConsumer3 {
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             String receivedMessage = new String(delivery.getBody());
 
-            LOGGER.info("Header Tv Consumer {}", receivedMessage);
+            LOGGER.info("Header Ac Consumer {}", receivedMessage);
 
         };
         channel.basicConsume(
-                "Tv",
+                "Ac",
                 true,
                 deliverCallback, consumerTag -> {
                     LOGGER.info("Message Tag {}", consumerTag);
