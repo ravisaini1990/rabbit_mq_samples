@@ -32,7 +32,7 @@ public class PersonRestController {
         //rabbitTemplate.convertAndSend("Fanout-Exchnage", "", person);
         //rabbitTemplate.convertAndSend("Topic-Exchange", "ac.person.mobile", person);
 
-        //to header exchange
+        //to header exchange - convert object to byte array
         Message message = MessageBuilder.withBody(objectMapper.writeValueAsBytes(person))
                 //.setHeader("x-match", "any")
                 .setHeader("isPerson", true)
